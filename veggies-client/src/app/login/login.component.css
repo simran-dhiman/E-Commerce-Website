@@ -1,0 +1,28 @@
+.login-card {
+    position: relative;
+    display: block;
+    padding: 2rem;
+    margin-top: 6rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px -1px rgba(0, 0, 0, 0.5);
+}
+
+.form-header {
+    position: relative;
+    display: block;
+    text-align: center;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.form-header h3 {
+    margin-top: 0;
+}
+
+.login-btn {
+    display: block;
+    width: 100%;
+    background-color: #025125;
+    color: white;
+}

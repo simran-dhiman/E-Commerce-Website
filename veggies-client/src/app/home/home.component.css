@@ -1,0 +1,273 @@
+.banner {
+    position: relative;
+    display: block;
+    background-color: #4a4c4a;
+    background-image: url("/assets/images/fruits.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-blend-mode: overlay;
+    padding: 2rem 0;
+    /* max-height: 50vh; */
+    height: 30vh;
+}
+
+/* .banner h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+} */
+
+.banner-img {
+    position: relative;
+    display: block;
+    height: 100%;
+}
+
+.search {
+    /* vertical-align: middle; */
+    /* justify-content: center; */
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    /* position: relative;
+    top: 50%;
+    transform: translateY(-50%); */
+    border: 0;
+}
+
+
+.showcase {
+    row-gap: 2rem;
+}
+
+.showcase-img {
+    height: 40vh;
+}
+
+img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.best-selling-row {
+    row-gap: 2rem;
+}
+
+.best-selling-veggies {
+    text-align: center;
+}
+
+.best-selling-veggies-items {
+    /* max-height: 15vh; */
+    /* width: auto;
+    height: 100%; */
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.15); */
+    z-index: 100;
+    /* border: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.best-selling-veggies-items img {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    max-height: 15vh;
+    margin: auto;
+}
+
+.brand-card {
+    background-color: #aae0af;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+.shop-heading {
+    text-align: center;
+}
+
+.recipe {
+    background-color: #d6d69f;
+    padding: 1.5rem;
+}
+
+.recipe-heading {
+    text-align: center;
+}
+
+.recipe-img-phone img {
+    height: 250px;
+    width: 250px;
+    border-radius: 100%;
+    margin: 2rem auto;
+}
+
+.brand-img-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    justify-content: space-evenly;
+    background-color: #d0f1c7;
+    padding: 1.3rem;
+    border-radius: 10px;
+}
+
+ 
+.brand-img {
+    /* background-color: #aae0af; */
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    width: 27%;
+}
+
+.brand-img a {
+    position: relative;
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    height: auto;
+}
+
+.product-header {
+    padding: 1rem;
+    min-height: 150px;
+    max-height: 150px;
+    overflow: auto;
+}
+
+.product-header img {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+}
+
+.product-body {
+    padding: 1rem;
+    height: 100%;
+}
+
+.product-name {
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* .item-btn {
+    display: block;
+    font-size: 0.7rem;
+    border-radius: 5px;
+    padding: 0.5rem 0.6rem;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4d834d;
+    cursor: pointer;
+} */
+
+.size {
+    font-size: 2.5rem;
+    padding:  0 2rem 1rem 2rem;
+    color: #1e8332;
+}
+
+.product-price {
+    text-align: center;
+}
+
+.add-btn {
+    position: relative;
+    display: block;
+    /* width: 100%; */
+    margin-top: auto;
+    margin: 0 auto;
+    background-color: #abf0c9;
+    color: #025125;
+}
+
+
+@media screen and (min-width: 768px) {
+    .banner {
+        position: relative;
+        display: block;
+        background-color: #4a4c4a;
+        background-color: #313431;
+        padding: 6.5rem 0 4rem 0;
+        max-height: 50vh;
+        height: 50vh;
+    }
+
+    .banner h1 {
+        font-weight: bolder;
+        font-size: 3rem;
+    }
+
+    .search {
+        /* vertical-align: middle; */
+        /* justify-content: center; */
+        width: 100%;
+        padding: 0.7rem;
+        border-radius: 10px;
+        position: relative;
+        /* top: 50%;
+        transform: translateY(-50%); */
+        border: 0;
+    }
+
+    .brand-img {
+        /* background-color: #aae0af;
+        border-radius: 5px; */
+        width: 13%;
+    }
+
+    /* .brand-img img {
+        height: 100px;
+        width: auto;
+    } */
+
+    .shop-heading {
+        text-align: center;
+    }
+
+    .recipe {
+        position: relative;
+        display: block;
+        /* background-color: #d6d69f; */
+        padding: 4rem 0;
+        background-image: url(/assets/images/chef.jpeg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        background-color: #232523;
+        background-blend-mode: overlay;
+        color: #dbd4d4;
+        font-size: 1.3rem;
+    }
+
+    .recipe-img img{
+        position: relative;
+        display: block;
+        border-radius: 100%;
+        height: 20rem;
+        width: 20rem;
+        margin: auto;
+    }  
+
+    .size {
+        font-size: 4rem;
+        padding:  0 3rem 1rem 3rem;
+        color: #1e8332;
+    }
+
+    .best-selling-border {
+        border-right: 1px solid rgba(0, 0, 0, 0.15);
+    }
+}

@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    position: relative;
+    font-family: 'Kanit', sans-serif;
+    box-sizing: border-box;
+}
+
+h2,h3,h6 {
+    font-weight: bold;
+    margin-top: 2rem;
+    color: #474c49;
+    letter-spacing: 0.1rem;
+}
+
+/* .h1 {
+    font-size: 3rem;
+    font-weight: bold;
+} */
+
+.banner h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}

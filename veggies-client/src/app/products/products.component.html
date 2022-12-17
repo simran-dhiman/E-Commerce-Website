@@ -1,0 +1,21 @@
+<div class='text-center'>
+    <div class='col-12 mb-5 mt-5'>
+        <h3 class='product-category'>{{ productCategory }}</h3>
+    </div>
+</div>
+
+<div class='container'>
+    <div class='products-grid'>
+        <div class='product' *ngFor='let item of products'>
+            <div class='product-header'>
+                <img src='{{ item.imagePath }}' alt='Product Image'>
+            </div>
+            <div class='product-body'>
+                <h2 class='product-name'>{{ item.name }}</h2>
+                <p class='product-price'>Rs. {{ item.price }}/{{ item.measureUnit }}</p>
+                <button class='btn add-btn' (click)='addToCart(item)'>Add to cart</button>
+                <!-- <button class='btn add-btn' *ngIf='cart.get(item.id) !== undefined' (click)='removeFromCart(item)'>Remove</button> -->
+            </div>
+        </div>
+    </div>
+</div>

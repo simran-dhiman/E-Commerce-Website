@@ -1,0 +1,355 @@
+<div class="banner">
+    <div class="container position-relative h-100">
+        <div class="row position-relative h-100">
+            <div class="col-12 col-md-12 position-relative">
+                <h1 class="text-center text-light">Fresh Vegetables and Fruits</h1>
+                <h1 class="text-center text-light">Straight from Farm</h1>
+            </div>
+            <!-- <div class="col-12 offset-md-3 col-md-6 position-relative">
+                <input type="search" class="search" placeholder="Search Here...">
+            </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- <div class="container mt-5">
+    <div class="row showcase">
+
+            <div class="col-12 col-md-6">
+                <div class="showcase-img">
+                    <img src="/assets/images/arpit.jpg" alt="image">
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="showcase-img">
+                    <img src="/assets/images/arpit.jpg" alt="image">
+                </div>
+            </div>
+
+    </div>
+</div> -->
+
+<div class="container mt-5">
+    <div class="row border-bottom pb-3">
+        <div class="col-12 col-md-12 px-md-5">
+            <div class="row best-selling-veggies">
+                <div class="col-12 mb-3">
+                    <h3>Deals of the Day</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items" *ngFor="let item of dealsOfTheDay">
+                    <div class="product-header">
+                        <img [src]="item.imagePath" alt="image">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-name">{{ item.name }}</p>
+                        <p class='product-price'>Rs. {{ item.price }}/{{ item.measureUnit }}</p>
+                        <button class='btn add-btn' (click)='addToCart(item)'>Add to cart</button>
+                        <!-- <button class='btn add-btn' *ngIf='cart.get(item.id) !== undefined' (click)='removeFromCart(item)'>Remove</button> -->
+                    </div>
+                </div>
+                <!-- <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/fruits/strawberry.png" alt="image">
+                    <p class="item-name mt-2">Strawberry</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/fruits/dragonfruit.png" alt="image">
+                    <p class="item-name mt-2">Dragon Fruit</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/vegetables/tomato.png" alt="image">
+                    <p class="item-name mt-2">Tomato</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-6 px-md-5 best-selling-border">
+            <div class="row best-selling-veggies">
+                <div class="col-12 mb-3">
+                    <h3>Best Selling Veggies</h3>
+                </div>
+            </div>
+            <div class="row best-selling-row">
+                <div class="col-6 mb-4 best-selling-veggies-items" *ngFor="let item of bestSellingVeggies">
+                    <div class="product-header">
+                        <img [src]="item.imagePath" alt="image">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-name">{{ item.name }}</p>
+                        <p class='product-price'>Rs. {{ item.price }}/{{ item.measureUnit }}</p>
+                        <button class='btn add-btn' (click)='addToCart(item)'>Add to cart</button>
+                        <!-- <button class='btn add-btn' *ngIf='cart.get(item.id) !== undefined' (click)='removeFromCart(item)'>Remove</button> -->
+                    </div>
+                </div>
+                <!-- <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/vegetables/cauliflower.png" alt="image">
+                    <p class="item-name">Cauliflower</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/vegetables/spinach.png" alt="image">
+                    <p class="item-name">Spinach</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/vegetables/tomato.png" alt="image">
+                    <p class="item-name">Tomato</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 mt-4 mt-md-0 px-md-5">
+            <div class="row best-selling-veggies">
+                <div class="col-12 mb-3">
+                    <h3>Best Selling Fruits</h3>
+                </div>
+            </div>
+            <div class="row best-selling-row">
+                <div class="col-6 mb-4 best-selling-veggies-items" *ngFor="let item of bestSellingFruits">
+                    <div class="product-header">
+                        <img [src]="item.imagePath" alt="image">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-name">{{ item.name }}</p>
+                        <p class='product-price'>Rs. {{ item.price }}/{{ item.measureUnit }}</p>
+                        <button class='btn add-btn' (click)='addToCart(item)'>Add to cart</button>
+                        <!-- <button class='btn add-btn' *ngIf='cart.get(item.id) !== undefined' (click)='removeFromCart(item)'>Remove</button> -->
+                    </div>
+                </div>
+                <!-- <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/fruits/strawberry.png" alt="image">
+                    <p class="item-name">Strawberry</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/fruits/orange.png" alt="image">
+                    <p class="item-name">Orange</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/fruits/kiwi.png" alt="image">
+                    <p class="item-name">Kiwi</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4 mb-3">
+    <div class="row">
+        <div class="col-12 shop-heading">
+            <h3>Shop By Brands</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row px-3">
+        <div class="col-12 col-md-12 pr-md-5">
+            <div class="brand-img-container">
+                <div class="brand-img">
+                    <a [routerLink]='nestleLink'>
+                        <img src="/assets/images/nestle.png" alt="image">
+                    </a>
+                </div>
+
+                <div class="brand-img">
+                    <a [routerLink]='hersheysLink'>
+                        <img src="/assets/images/hersheys.png" alt="image">
+                    </a>
+                </div>
+
+                <div class="brand-img">
+                    <a [routerLink]='heinzLink'>
+                        <img src="/assets/images/heinz.png" alt="image">
+                    </a>
+                </div>
+
+                <div class="brand-img">
+                    <a [routerLink]='drOetkarLink'>
+                        <img src="/assets/images/dr.oetkar.png" alt="image">
+                    </a>
+                </div>
+                
+                <div class="brand-img">
+                    <a [routerLink]='knorrLink'>
+                        <img src="/assets/images/knorr.png" alt="image">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-12 col-md-6 pl-md-5">
+            <div class="row p-3 brand-card">
+                <div class="col-4">
+                    <img src="/assets/images/hersheys.png" alt="image">
+                </div>
+                <div class="col-8">
+                    <p>Hershey's</p>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-12 px-md-5">
+            <div class="row best-selling-veggies">
+                <div class="col-12 mb-3">
+                    <h3>Ready To Eat Food</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items" *ngFor="let item of readyToEatFood">
+                    <div class="product-header">
+                        <img [src]="item.imagePath" alt="image">
+                    </div>
+                    <div class="product-body">
+                        <p class="product-name">{{ item.name }}</p>
+                        <p class='product-price'>Rs. {{ item.price }}/{{ item.measureUnit }}</p>
+                        <button class='btn add-btn' (click)='addToCart(item)'>Add to cart</button>
+                        <!-- <button class='btn add-btn' *ngIf='cart.get(item.id) !== undefined' (click)='removeFromCart(item)'>Remove</button> -->
+                    </div>
+                </div>
+                <!-- <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/frenchfries.png" alt="image">
+                    <p class="item-name mt-2">McCain Fries</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/lays.png" alt="image">
+                    <p class="item-name mt-2">Lays</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div>
+                <div class="col-6 col-md-3 mb-4 best-selling-veggies-items">
+                    <img src="/assets/images/mccainsmileys.png" alt="image">
+                    <p class="item-name mt-2">McCain Smiles</p>
+                    <button class="item-btn btn-primary">
+                        Add To Cart
+                    </button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="recipe mt-5">
+    <div class="container position-relative h-100">
+        <div class="row d-md-none text-center">
+           <div class="col-12">
+            <h4>Today's Recipe</h4>
+            <!-- <h5>Pakode</h5> -->
+           </div>
+        </div>
+        <div class="row position-relative h-100">
+            <!-- <div class="col-12 col-md-5 position-relative h-100 d-md-flex">
+                <div class="recipe-img  recipe-img-phone">
+                    <img src="/assets/images/chef.jpeg" alt="image">
+                </div>
+            </div> -->
+            <div class="col-12 position-relative h-100 d-flex d-md-none">
+                <div class="d-md-none mx-auto">
+                    <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam cum tenetur sit esse omnis a! Eveniet beatae explicabo ea et accusantium aperiam, harum nisi nulla  Quia, porro.</p> -->
+                    <!-- <ol>
+                        <li>
+                            nfjesn vjran aorv snvs as.
+                        </li>
+                        <li>
+                            nfjesn vjran aorv snvs as.
+                        </li><li>
+                            nfjesn vjran aorv snvs as.
+                        </li><li>
+                            nfjesn vjran aorv snvs as.
+                        </li><li>
+                            nfjesn vjran aorv snvs as.
+                        </li><li>
+                            nfjesn vjran aorv snvs as.
+                        </li>
+                    </ol> -->
+                    <h5 class="my-4 col-12 mx-auto border-bottom pb-3 text-center">Peanut Butter Pie</h5>
+                    <p>1 . Preheat oven to 375 degrees F (190 degrees C).</p>
+                    <p>2 . Combine 1 1/4 cup cookie crumbs, 1/4 cup sugar, and 1/4 cup butter; press into a 9-inch pie plate. Bake in preheated oven for 10 minutes. Cool on wire rack.</p>
+                    <p>3 . In a mixing bowl, beat cream cheese, peanut butter, 1 cup sugar, 1 tablespoon butter, and vanilla until smooth. Whip the cream, and fold into the peanut butter mixture.</p>
+                    <p>4 . Gently spoon filing into crust. Garnish pie with chocolate or cookie crumbs if desired. Refrigerate for several hours before serving.</p>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-8 mx-auto position-relative h-100 recipe-heading d-none d-md-block text-center">
+                <h4 class="mb-3">Today's Recipe</h4>
+                <h5 class="my-4 col-md-6 mx-auto border-bottom pb-3">Peanut Butter Pie</h5>
+                <p>1 . Preheat oven to 375 degrees F (190 degrees C).</p>
+                <p>2 . Combine 1 1/4 cup cookie crumbs, 1/4 cup sugar, and 1/4 cup butter; press into a 9-inch pie plate. Bake in preheated oven for 10 minutes. Cool on wire rack.</p>
+                <p>3 . In a mixing bowl, beat cream cheese, peanut butter, 1 cup sugar, 1 tablespoon butter, and vanilla until smooth. Whip the cream, and fold into the peanut butter mixture.</p>
+                <p>4 . Gently spoon filing into crust. Garnish pie with chocolate or cookie crumbs if desired. Refrigerate for several hours before serving.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-center">About Us</h3>
+        </div>
+            <div class="col-md-8 offset-md-2 mt-md-3">
+                <p class="text-center">We deliver fresh Vegetables and Fruits straight from Farm. Our company was established in 2020. We are the leading distributor of Natural Foods. We ensure the High Quality of our product. We also provide 24x7 customer support and provide instant resolutions.</p>
+            </div>
+        
+
+            <div class="col-md-8 offset-md-2 mt-md-3 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <i class="fa fa-clock-o size"></i>
+                        <p>On Time Delivery</p>
+                    </div>
+                    
+                    <div class="col-4">
+                        <i class="fa fa-check-circle size"></i>
+                        <p>Customer Satisfaction</p>
+                    </div>
+    
+                    <div class="col-4">
+                        <i class="fa fa-support size"></i>
+                        <p>24/7 Support</p>
+                    </div>
+                </div> 
+            </div>
+            
+    </div>
+</div>

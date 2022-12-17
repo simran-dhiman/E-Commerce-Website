@@ -1,0 +1,28 @@
+.background {
+    background-color: #10533e;
+    background-color: #025125;
+    color: white;
+    padding-top: 3rem;
+    margin-top: 3rem;
+}
+
+.footer-nav{
+    list-style: none;
+    opacity: 0.6;
+    padding-left: 0;
+}
+
+.footer-logo img {
+    display: block;
+    height: 3.4rem;
+    margin: 0 auto;
+}
+
+.footer-icon {
+    font-size: 1.3rem;
+    opacity: 0.6;
+}
+
+.border-bottom {
+    opacity: 0.6;
+}

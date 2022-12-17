@@ -1,0 +1,59 @@
+<div class="container mt-5 products-container">
+    <div class="row empty-cart-container" *ngIf="cart.length == 0">
+        <div class="col-12">
+            <i class="fa fa-shopping-cart"></i>
+            <p class="empty-cart-text">Nothing here... Explore and order</p>
+        </div>
+    </div>
+    <div class="row" *ngIf="cart.length > 0">
+        <div class="col-8 cart-item-container">
+
+            <div class="cart-item" *ngFor="let item of cart">
+                <div class="item-img">
+                    <img class="product-img" [src]="item.product.imagePath" alt="Product Image">
+                </div>
+
+                <div class="item-desc">
+                    <p class="item-name">{{ item.product.name }}</p>
+                    <p class="item-quantity-label mb-1">Quantity ({{ item.product.measureUnit }})</p>
+                    <div class="change-quantity">
+                        <button class="btn dec-quantity" [disabled]="item.quantity <= 1 || itemUpdating" (click)="decreaseQuantity(item)">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <p class="item-quantity">{{ item.quantity }}</p>
+                        <button class="btn inc-quantity" [disabled]="item.quantity >= item.product.quantity || itemUpdating" (click)="increaseQuantity(item)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="item-pricing">
+                    <p class="item-price">Price: {{ item.product.price }}</p>
+                    <p class="item-price-quantity">x {{ item.quantity }}</p>
+                    <p class="item-price-total">Total: {{ item.quantity * item.product.price }}</p>
+                </div>
+
+                <div class="remove-btn-container">
+                    <button class="btn remove-btn" (click)="removeItem(item)">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4">
+            <div class="summary-card">
+                <div class="summary-header">
+                    <p class="mb-1">Summary</p>
+                </div>
+                <div class="summary-body">
+                    <p class="summary-item">Total Items <span class="float-right">{{ totalItems }}</span></p>
+                    <p class="summary-item">Total Price <span class="float-right">{{ totalPrice }}</span></p>
+                </div>
+                <div class="summary-footer">
+                    <button class="btn btn-place-order">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

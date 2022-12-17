@@ -1,0 +1,90 @@
+<nav>
+    <div class='container'>
+        <div class='navbar navbar-expand-md navbar-dark'>
+            <a [routerLink]='["/"]' class='navbar-brand'>
+                <img src='/assets/images/logo.png' alt='image'>
+            </a>
+            <ul class='navbar-nav ml-auto'>
+                <li class='nav-item'>
+                    <a [routerLink]='["/"]' class='nav-link'>Home</a>
+                </li>
+                <li class='nav-item products'>
+                    <div  class='nav-link'>
+                        <span>Products<i class='fa fa-caret-down ml-2'></i></span>
+                        <ul class='nav-options'>
+                            <div class='nav-tooltip-container'>
+                                <span class='nav-opt-tooltip'></span>
+                            </div>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='vegetablesLink' class='nav-opt-link'>Vegetables</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='fruitsLink' class='nav-opt-link'>Fruits</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='dryfruitsLink' class='nav-opt-link'>Dryfruits</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class='nav-item products'>
+                    <div  class='nav-link'>
+                        <span>Brands<i class='fa fa-caret-down ml-2'></i></span>
+                        <ul class='nav-options'>
+                            <div class='nav-tooltip-container'>
+                                <span class='nav-opt-tooltip'></span>
+                            </div>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='nestleLink' class='nav-opt-link'>Nestle</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='hersheysLink' class='nav-opt-link'>Hersheys</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='heinzLink' class='nav-opt-link'>Heinz</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='drOetkarLink' class='nav-opt-link'>Dr Oetkar</a>
+                            </li>
+                            <li class='nav-opt-item'>
+                                <a [routerLink]='knorrLink' class='nav-opt-link'>Knorr</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class='nav-item'>
+                    <a [routerLink]='["/cart"]' class='nav-link'>Cart</a>
+                </li>
+                <li class='nav-item account'>
+                    <div class='nav-link'>
+                        <i class='fa fa-user-circle fa-lg'>
+                            <i class='fa fa-caret-down ml-2'></i>
+                        </i>
+                        <ul class='nav-options'>
+                            <div class='nav-tooltip-container'>
+                                <span class='nav-opt-tooltip'></span>
+                            </div>
+                            <li class="account-name" *ngIf='userLoggedIn'>
+                                <span>{{ username }}</span>
+                            </li>
+                            <li class='nav-opt-item' *ngIf='!userLoggedIn'>
+                                <a [routerLink]='["/login"]' class='nav-opt-link'>Login</a>
+                            </li>
+                            <li class='nav-opt-item' *ngIf='!userLoggedIn'>
+                                <a [routerLink]='["/register"]' class='nav-opt-link'>Register</a>
+                            </li>
+                            <!-- <li class='nav-opt-item' *ngIf='userLoggedIn'>
+                                <a [routerLink]='["/account"]' class='nav-opt-link'>Profile</a>
+                            </li> -->
+                            <li class='nav-opt-item logout' *ngIf='userLoggedIn'>
+                                <a class='nav-opt-link' (click)='logout()'>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

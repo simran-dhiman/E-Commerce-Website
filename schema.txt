@@ -1,0 +1,264 @@
+CREATE TABLE `veggies`.`brands` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `brand` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE
+);
+
+CREATE TABLE `veggies`.`product_categories` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `category` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `category_UNIQUE` (`category` ASC) VISIBLE
+);
+
+
+CREATE TABLE `veggies`.`products` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `quantity` INT NOT NULL,
+  `price` DOUBLE NOT NULL,
+  `measure_unit` VARCHAR(10) NOT NULL,
+  `image_path` VARCHAR(100) NOT NULL,
+  `category_id` int,
+  `brand_id` int,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`brand_id`) references `brands` (`id`),
+  FOREIGN KEY (`category_id`) references `product_categories` (`id`),
+  UNIQUE INDEX `name_UNIQUE` (`name` ASC) VISIBLE
+);
+
+
+CREATE TABLE `veggies`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(45) NOT NULL,
+  `last_name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE
+);
+
+
+CREATE TABLE `veggies`.`user_cart` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `product_id` INT NOT NULL,
+  `quantity` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `item_id_idx` (`item_id` ASC) VISIBLE,
+  INDEX `user_id_fk_idx` (`user_id` ASC) VISIBLE,
+  CONSTRAINT `item_id_fk`
+    FOREIGN KEY (`item_id`)
+    REFERENCES `veggies`.`products` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `user_id_fk`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `veggies`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+
+-- Brands
+insert into brands (brand)
+values ('Nestle');
+insert into brands (brand)
+values ('Hersheys');
+insert into brands (brand)
+values ('Heinz');
+insert into brands (brand)
+values ('Dr Oetkar');
+insert into brands (brand)
+values ('Knorr');
+-- insert into brands (brand)
+-- values ('Ready');
+insert into brands (brand)
+values ('Other');
+
+
+-- Product Categories
+insert into product_categories (category)
+values ('Vegetables');
+insert into product_categories (category)
+values ('Fruits');
+insert into product_categories (category)
+values ('DryFruits');
+insert into product_categories (category)
+values ('Packed');
+insert into product_categories (category)
+values ('Ready To Eat');
+
+
+-- Products
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cauliflower', 20, 10, 'kg', 'cauliflower.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Capsicum', 30, 10, 'kg', 'capsicum.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Beans', 50, 10, 'kg', 'beans.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Brinjal', 30, 10, 'kg', 'brinjal.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Brocolli', 80, 10, 'kg', 'brocolli.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cabbage', 60, 10, 'kg', 'cabbage.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cucumber', 50, 10, 'kg', 'cucumber.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Ladyfinger', 40, 10, 'kg', 'ladyfinger.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Onion', 100, 10, 'kg', 'onion.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Spinach', 45, 10, 'kg', 'spinach.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pea', 70, 10, 'kg', 'pea.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pumpkin', 30, 10, 'kg', 'pumpkin.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Tomato', 25, 10, 'kg', 'tomato.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Turnip', 80, 10, 'kg', 'turnip.png', (select id from product_categories where category = 'Vegetables'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Dragonfruit', 50, 10, 'piece', 'dragonfruit.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Kiwi', 30, 10, 'piece', 'kiwi.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Orange', 80, 10, 'kg', 'orange.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Strawberry', 200, 10, 'kg', 'strawberry.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Carrot', 40, 10, 'kg', 'carrot.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Apple', 100, 10, 'kg', 'apple.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Blackgrapes', 150, 10, 'kg', 'blackgrapes.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Banana', 60, 10, 'dozen', 'banana.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Blueberries', 200, 10, 'kg', 'blueberries.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cherry', 150, 10, 'kg', 'cherry.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Grapes', 60, 10, 'kg', 'grapes.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Guava', 80, 10, 'kg', 'guava.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Lychee', 150, 10, 'kg', 'lychee.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Mango', 120, 10, 'kg', 'mango.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Papaya', 40, 10, 'kg', 'papaya.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pashionfruit', 200, 10, 'peice', 'passionfruit.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Peaches', 140, 10, 'kg', 'peaches.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pears', 100, 10, 'kg', 'pears.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pineapple', 130, 10, 'kg', 'pineapple.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Plum', 160, 10, 'kg', 'plum.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pomegranate', 180, 10, 'kg', 'pomegranate.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Rasberry', 250, 10, 'kg', 'rasberry.png', (select id from product_categories where category = 'Fruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Walnuts', 1000, 10, 'piece', 'walnuts.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Almond', 600, 10, 'piece', 'almond.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cashew', 1200, 10, 'piece', 'cashew.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Dry Dates', 800, 10, 'kg', 'drydates.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Flax Seeds', 100, 10, 'kg', 'flaxseeds.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Kismis', 500, 10, 'kg', 'kismis.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Peanuts', 200, 10, 'kg', 'peanuts.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pistachio', 1500, 10, 'dozen', 'pistachio.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pumpkin Seeds', 200, 10, 'kg', 'pumpkinseeds.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Saffron', 900, 10, 'kg', 'saffron.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Sunflower Seeds', 400, 10, 'kg', 'sunflowerseeds.png', (select id from product_categories where category = 'DryFruits'), (select id from brands where name = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cerelac', 1000, 10, 'item', 'cerelac.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Coffeemate', 600, 10, 'item', 'coffeemate.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cornflakes', 1200, 10, 'item', 'cornflakes.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('KitKat', 800, 10, 'item', 'kitkat.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Milkmaid', 500, 10, 'item', 'milkmaid.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Milo', 200, 10, 'item', 'milo.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Nestle'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Jollyrancher', 1000, 60, 'item', 'jollyrancher.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Hersheys'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Kisses', 600, 30, 'item', 'kisses.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Hersheys'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Spreads', 1200, 100, 'item', 'spreads.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Hersheys'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Syrup', 800, 200, 'item', 'syrup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Hersheys'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Whoppers', 500, 80, 'item', 'whoppers.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Hersheys'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Beanz', 1000, 10, 'item', 'beanz.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Ketchup', 600, 10, 'item', 'ketchup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Mustard', 1200, 10, 'item', 'mustard.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Saladcream', 800, 10, 'item', 'saladcream.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Soup', 500, 10, 'item', 'soup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Sweetrelish', 200, 10, 'item', 'sweetrelish.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Heinz'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Bistro', 1000, 10, 'item', 'bistro.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Chocolava Muffins', 600, 10, 'item', 'chocolavamuffins.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cocoa Powder', 1200, 10, 'item', 'cocoapowder.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cream', 800, 10, 'item', 'cream.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Mayonnaise', 500, 10, 'item', 'mayonnaise.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Muffins', 200, 10, 'item', 'muffins.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Peanut Butter', 200, 10, 'item', 'peanutbutter.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pizza', 200, 10, 'item', 'pizza.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Zucker', 200, 10, 'item', 'zucker.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Dr Oetkar'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Cup Soup', 1000, 10, 'item', 'cupsoup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Manchurian', 600, 10, 'item', 'manchurian.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Mast Masala', 1200, 10, 'item', 'mastmasala.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Minestrone Soup', 800, 10, 'item', 'minestronesoup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Pastaslides', 500, 10, 'item', 'pastaslides.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Quick Pasta', 200, 10, 'item', 'quickpasta.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Rice', 200, 10, 'item', 'rice.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Tomato Soup', 200, 10, 'item', 'tomatosoup.png', (select id from product_categories where category = 'Packed'), (select id from brands where name = 'Knorr'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Maggi', 20, 10, 'item', '/assets/images/readyToEatFood/maggi.png', (select id from product_categories where category = 'Ready To Eat'), (select id from brands where brand = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('McCain Fries', 200, 10, 'item', '/assets/images/readyToEatFood/mccainfries.png', (select id from product_categories where category = 'Ready To Eat'), (select id from brands where brand = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('Lays', 30, 10, 'item', '/assets/images/readyToEatFood/lays.png', (select id from product_categories where category = 'Ready To Eat'), (select id from brands where brand = 'Other'));
+insert into products (name, quantity, price, measure_unit, image_path, category_id, brand_id)
+values ('McCain Smileys', 150, 10, 'item', '/assets/images/readyToEatFood/mccainsmileys.png', (select id from product_categories where category = 'Ready To Eat'), (select id from brands where brand = 'Other'));
